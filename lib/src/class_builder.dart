@@ -34,7 +34,6 @@ class ClassBuilder extends Equatable {
     final gettersbuffer = StringBuffer()..writeAll(getters);
     buffer.write(
         'class ${isPrivate ? '_' : ''}${name.pascalCase}{${isPrivate ? '_' : ''}${name.pascalCase}${havePrivateConstractor ? '._' : ''}(${constractourProps()});${classPropsBuilder()}$gettersbuffer}');
-    print(buffer);
 
     return buffer.toString();
   }
