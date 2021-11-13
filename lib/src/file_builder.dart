@@ -15,6 +15,7 @@ class DartFileBuilder {
 
   /// * file classes
   final List<ClassBuilder> _classes = [];
+  List<ClassBuilder> get classes => _classes;
 
   DartFileBuilder({
     required this.name,
@@ -25,15 +26,14 @@ class DartFileBuilder {
 
   @override
   String toString() {
-    final buffer = StringBuffer();
-
-    buffer.writeAll(_classes);
     final _imports = StringBuffer()
       ..writeAll(imports)
       ..toString();
     final _topComments = StringBuffer()
       ..writeAll(topComments)
       ..toString();
+    final buffer = StringBuffer();
+    buffer.writeAll(_classes);
     return '$_topComments\n\n$_imports\n\n$buffer';
   }
 
@@ -44,6 +44,3 @@ class DartFileBuilder {
     _classes.add(builder);
   }
 }
-  //  final genFile = File('./bin/gen/ar.dart');
-  //   if (await genFile.exists()) await genFile.delete();
-  //   await genFile.writeAsString(dfBulder.toString());

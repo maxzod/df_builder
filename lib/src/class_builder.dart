@@ -30,17 +30,11 @@ class ClassBuilder extends Equatable {
 
   @override
   String toString() {
-    final buffer = StringBuffer(_topComments.isNotEmpty ? _topComments : '');
-
-    final gettersbuffer = StringBuffer();
-    getters.forEach(gettersbuffer.writeln);
-
-    buffer.write('''
-    class ${isPrivate ? '_' : ''}${name.pascalCase} {
-  ${isPrivate ? '_' : ''}${name.pascalCase}${havePrivateConstractor ? '._' : ''} (${_constractourProps()});
-  $_classProps
-  $gettersbuffer
-}''');
+    final buffer = StringBuffer(topCommentsBuilder());
+    final gettersbuffer = StringBuffer()..writeAll(getters);
+    buffer.write(
+        'class ${isPrivate ? '_' : ''}${name.pascalCase}{${isPrivate ? '_' : ''}${name.pascalCase}${havePrivateConstractor ? '._' : ''}(${constractourProps()});${classPropsBuilder()}$gettersbuffer}');
+    print(buffer);
 
     return buffer.toString();
   }
@@ -48,24 +42,24 @@ class ClassBuilder extends Equatable {
   ///* return true based on the class name if stratrs with `_`
   bool get isPrivate => name.startsWith('_');
 
-  String get _classProps {
+  String classPropsBuilder() {
     final _buffer = StringBuffer();
     classProps.forEach(_buffer.writeln);
     return _buffer.toString();
   }
 
-  String get _topComments {
+  String topCommentsBuilder() {
     final _buffer = StringBuffer();
     topComments.forEach(_buffer.writeln);
     return _buffer.toString();
   }
 
-  String _constractourProps() {
+  String constractourProps() {
     final buf = StringBuffer();
     buf.writeAll(classProps
         .where((e) => e.addToConstructor)
         .toList()
-        .map((e) => 'this.' + e.name)
+        .map((e) => 'this.' + e.name + ',')
         .toList());
     return buf.toString().trim();
   }
