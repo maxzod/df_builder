@@ -14,15 +14,27 @@ class ClassGetter {
   /// * is the getter static
   final bool isStatic;
 
+  /// * comments in top of the getter
+  final String comments;
+
+  /// * if the getter is deprecated
+  /// * provide a message to explain the deprecation
+  /// * will anotate the getter with `@deprecated`
+  final String? deprecatedMessage;
+
   ClassGetter({
     required this.type,
     required this.name,
     required this.whatToReturn,
+    this.comments = '',
+    this.deprecatedMessage,
     this.isStatic = false,
   });
+
+  bool get isdeprecated => deprecatedMessage != null;
   bool get isPrivate => name.startsWith('_');
   @override
   String toString() {
-    return "${isStatic ? 'static ' : ''}$type get ${isPrivate ? '_' : ''}${name.camelCase} => $whatToReturn ;";
+    return "${comments.isEmpty ? '' : '$comments\n'}${isdeprecated ? '@Deprecated(\'$deprecatedMessage\')\n' : ''}${isStatic ? 'static ' : ''}$type get ${isPrivate ? '_' : ''}${name.camelCase} => $whatToReturn ;";
   }
 }

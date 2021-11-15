@@ -1,6 +1,7 @@
 name: df_builder
 description: small package to generate code in a simple way
 version: 0.0.1-beta
+homepage: https://github.com/maxzod/df_builder
 
 environment:
   sdk: ">=2.12.4 <3.0.0"
