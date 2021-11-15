@@ -35,6 +35,6 @@ class ClassGetter {
   bool get isPrivate => name.startsWith('_');
   @override
   String toString() {
-    return "${comments.isEmpty ? '' : '$comments\n'}${isdeprecated ? '@Deprecated(\'$deprecatedMessage\')\n' : ''}${isStatic ? 'static ' : ''}$type get ${isPrivate ? '_' : ''}${name.camelCase} => $whatToReturn ;";
+    return "${comments.isEmpty ? '' : '\n$comments\n'}${isdeprecated ? '@Deprecated(\'$deprecatedMessage\')\n' : ''}${isStatic ? 'static ' : ''}$type get ${isPrivate ? '_' : ''}${name.camelCase} => $whatToReturn ;";
   }
 }
