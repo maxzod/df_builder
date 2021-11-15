@@ -11,8 +11,8 @@ class ClassBuilder extends Equatable {
   /// * top comments
   final List<String> topComments;
 
-  /// * should use private constractour
-  final bool havePrivateConstractor;
+  /// * should use private constructor
+  final bool havePrivateConstructor;
 
   /// * class properties
   final List<ClassProp> classProps;
@@ -25,20 +25,20 @@ class ClassBuilder extends Equatable {
     this.classProps = const [],
     this.topComments = const [],
     this.getters = const [],
-    this.havePrivateConstractor = false,
+    this.havePrivateConstructor = false,
   });
 
   @override
   String toString() {
     final buffer = StringBuffer(topCommentsBuilder());
-    final gettersbuffer = StringBuffer()..writeAll(getters);
+    final gettersBuffer = StringBuffer()..writeAll(getters);
     buffer.write(
-        'class ${isPrivate ? '_' : ''}${name.pascalCase}{${isPrivate ? '_' : ''}${name.pascalCase}${havePrivateConstractor ? '._' : ''}(${constractourProps()});${classPropsBuilder()}$gettersbuffer}');
+        'class ${isPrivate ? '_' : ''}${name.pascalCase}{${isPrivate ? '_' : ''}${name.pascalCase}${havePrivateConstructor ? '._' : ''}(${constructorProps()});${classPropsBuilder()}$gettersBuffer}');
 
     return buffer.toString();
   }
 
-  ///* return true based on the class name if stratrs with `_`
+  ///* return true based on the class name if starts with `_`
   bool get isPrivate => name.startsWith('_');
 
   String classPropsBuilder() {
@@ -53,7 +53,7 @@ class ClassBuilder extends Equatable {
     return _buffer.toString();
   }
 
-  String constractourProps() {
+  String constructorProps() {
     final buf = StringBuffer();
     buf.writeAll(classProps
         .where((e) => e.addToConstructor)

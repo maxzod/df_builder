@@ -1,3 +1,3 @@
 void main() {
-  /// check out the packge tests for more examples
+  /// check out the package tests for more examples
 }

@@ -5,20 +5,20 @@ class ClassProp extends Equatable {
   final bool? _addToConstructor;
   final String name;
   final bool isStatic;
-  final bool isfinal;
+  final bool isFinal;
 
   ClassProp({
     required this.type,
     bool? addToConstructor,
     required this.name,
     this.isStatic = false,
-    this.isfinal = false,
+    this.isFinal = false,
   }) : _addToConstructor = addToConstructor;
 
-  bool get addToConstructor => isStatic ? false : _addToConstructor ?? isfinal;
+  bool get addToConstructor => isStatic ? false : _addToConstructor ?? isFinal;
   @override
   String toString() {
-    return '${isStatic ? 'static ' : ''}${isfinal ? 'final ' : ''}$type $name ;';
+    return '${isStatic ? 'static ' : ''}${isFinal ? 'final ' : ''}$type $name ;';
   }
 
   @override
@@ -26,6 +26,6 @@ class ClassProp extends Equatable {
         type,
         name,
         isStatic,
-        isfinal,
+        isFinal,
       ];
 }

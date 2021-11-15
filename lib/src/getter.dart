@@ -7,8 +7,8 @@ class ClassGetter {
   /// * name of the getter
   final String name;
 
-  /// * the acctual returl of the getter example => 'name'.tr
-  /// * dont add a `;` at the end of the return
+  /// * the actual return of the getter example => 'name'.tr
+  /// * don't add a `;` at the end of the return
   final String whatToReturn;
 
   /// * is the getter static
@@ -19,7 +19,7 @@ class ClassGetter {
 
   /// * if the getter is deprecated
   /// * provide a message to explain the deprecation
-  /// * will anotate the getter with `@deprecated`
+  /// * will annotate the getter with `@deprecated`
   final String? deprecatedMessage;
 
   ClassGetter({
@@ -31,10 +31,10 @@ class ClassGetter {
     this.isStatic = false,
   });
 
-  bool get isdeprecated => deprecatedMessage != null;
+  bool get isDeprecated => deprecatedMessage != null;
   bool get isPrivate => name.startsWith('_');
   @override
   String toString() {
-    return "${comments.isEmpty ? '' : '\n$comments\n'}${isdeprecated ? '@Deprecated(\'$deprecatedMessage\')\n' : ''}${isStatic ? 'static ' : ''}$type get ${isPrivate ? '_' : ''}${name.camelCase} => $whatToReturn ;";
+    return "${comments.isEmpty ? '' : '\n$comments\n'}${isDeprecated ? '@Deprecated(\'$deprecatedMessage\')\n' : ''}${isStatic ? 'static ' : ''}$type get ${isPrivate ? '_' : ''}${name.camelCase} => $whatToReturn ;";
   }
 }

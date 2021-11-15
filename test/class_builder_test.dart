@@ -11,21 +11,21 @@ void main() {
   });
 
   group(
-    'constractourProps',
+    'constructorProps',
     () {
       test('it return empty if no props', () {
         final cClass = ClassBuilder(name: 'foo');
-        expect(cClass.constractourProps(), '');
+        expect(cClass.constructorProps(), '');
       });
       test('it return props if exists', () {
         final cClass = ClassBuilder(
           name: 'foo',
           classProps: [
-            ClassProp(type: 'String', name: 'foo', isfinal: true),
-            ClassProp(type: 'String', name: 'bar', isfinal: true),
+            ClassProp(type: 'String', name: 'foo', isFinal: true),
+            ClassProp(type: 'String', name: 'bar', isFinal: true),
           ],
         );
-        expect(cClass.constractourProps(), 'this.foo,this.bar,');
+        expect(cClass.constructorProps(), 'this.foo,this.bar,');
       });
     },
   );
@@ -56,8 +56,8 @@ void main() {
       final cClass = ClassBuilder(
         name: 'foo',
         classProps: [
-          ClassProp(type: 'String', name: 'foo', isfinal: true),
-          ClassProp(type: 'String', name: 'bar', isfinal: true),
+          ClassProp(type: 'String', name: 'foo', isFinal: true),
+          ClassProp(type: 'String', name: 'bar', isFinal: true),
         ],
       );
       expect(cClass.classPropsBuilder(),
@@ -74,8 +74,8 @@ void main() {
           '/// this is a comment 2',
         ],
         classProps: [
-          ClassProp(type: 'String', name: 'foo', isfinal: true),
-          ClassProp(type: 'String', name: 'bar', isfinal: true),
+          ClassProp(type: 'String', name: 'foo', isFinal: true),
+          ClassProp(type: 'String', name: 'bar', isFinal: true),
         ],
       );
       expect(cClass.toString(),

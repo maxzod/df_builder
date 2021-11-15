@@ -5,8 +5,8 @@ void main() {
   test('isPrivate return True if starts with _', () {
     final getter = ClassGetter(type: '', name: '_foo', whatToReturn: 'foo;');
     expect(getter.isPrivate, isTrue);
-    final gettr2 = ClassGetter(type: '', name: 'foo', whatToReturn: 'foo;');
-    expect(gettr2.isPrivate, isFalse);
+    final getter2 = ClassGetter(type: '', name: 'foo', whatToReturn: 'foo;');
+    expect(getter2.isPrivate, isFalse);
   });
 
   test('it build the getter without static correctly', () {
