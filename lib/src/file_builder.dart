@@ -30,23 +30,27 @@ class DartFileBuilder {
       ..writeAll(imports)
       ..toString();
     final _exports = StringBuffer()
-      ..writeAll(imports)
+      ..writeAll(exports)
       ..toString();
     final _parts = StringBuffer()
-      ..writeAll(imports)
+      ..writeAll(parts)
       ..toString();
     final _topComments = StringBuffer()
       ..writeAll(topComments)
       ..toString();
-    final buffer = StringBuffer();
-    buffer.writeAll(_classes);
+    final classes = StringBuffer()
+      ..writeAll(_classes)
+      ..toString();
 
     final fileBuffer = StringBuffer()
       ..write(_imports)
+      ..write('\n')
       ..write(_exports)
+      ..write('\n')
       ..write(_parts)
+      ..write('\n')
       ..write(_topComments)
-      ..write(buffer);
+      ..write(classes);
     return fileBuffer.toString();
   }
 
