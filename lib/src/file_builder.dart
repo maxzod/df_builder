@@ -50,6 +50,7 @@ class DartFileBuilder {
       ..write(_parts)
       ..write('\n')
       ..write(_topComments)
+      ..write('\n')
       ..write(classes);
     return fileBuffer.toString();
   }
