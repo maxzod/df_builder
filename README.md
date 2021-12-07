@@ -14,3 +14,11 @@ to provide easy and simple way to create `TR` file for nations package also can 
 - start with `DartFileBuilder`
 - add what you need from `ClassBuilder` `ClassGetter` `ClassProp`
 - convert it to string using `DartFileBuilder`.toString()
+
+# Builders
+
+# DartFileBuilder
+
+- can add comments
+- can add exports
+- can add imports
