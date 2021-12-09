@@ -1,5 +1,4 @@
-import 'package:df_builder/src/class_builder.dart';
-import 'package:df_builder/src/file_builder.dart';
+import 'package:df_builder/df_builder.dart';
 import 'package:test/expect.dart';
 import 'package:test/test.dart';
 

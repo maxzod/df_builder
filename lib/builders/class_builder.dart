@@ -4,6 +4,7 @@ import 'package:recase/recase.dart';
 import 'getter.dart';
 import 'prop.dart';
 
+/// * creates new dart class
 class ClassBuilder extends Equatable {
   /// * class name
   final String name;

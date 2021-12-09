@@ -1,4 +1,4 @@
-import 'package:df_builder/src/getter.dart';
+import 'package:df_builder/df_builder.dart';
 import 'package:test/test.dart';
 
 void main() {
