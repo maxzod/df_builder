@@ -15,7 +15,7 @@ class ClassGetter {
   final bool isStatic;
 
   /// * comments in top of the getter
-  final String comments;
+  final List<String> comments;
 
   /// * if the getter is deprecated
   /// * provide a message to explain the deprecation
@@ -26,7 +26,7 @@ class ClassGetter {
     required this.type,
     required this.name,
     required this.whatToReturn,
-    this.comments = '',
+    this.comments = const [],
     this.deprecatedMessage,
     this.isStatic = false,
   });
