@@ -1,19 +1,19 @@
-import 'package:equatable/equatable.dart';
+import 'base.dart';
 
-class ClassProp extends Equatable {
+class ClassProp extends BaseBuilder {
   final String type;
   final bool? _addToConstructor;
-  final String name;
   final bool isStatic;
   final bool isFinal;
 
   ClassProp({
     required this.type,
     bool? addToConstructor,
-    required this.name,
+    required String name,
     this.isStatic = false,
     this.isFinal = false,
-  }) : _addToConstructor = addToConstructor;
+  })  : _addToConstructor = addToConstructor,
+        super(name: name);
 
   bool get addToConstructor => isStatic ? false : _addToConstructor ?? isFinal;
   @override

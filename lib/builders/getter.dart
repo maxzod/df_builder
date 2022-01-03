@@ -1,11 +1,9 @@
+import 'package:df_builder/df_builder.dart';
 import 'package:recase/recase.dart';
 
-class ClassGetter {
+class ClassGetter extends BaseBuilder {
   /// * return type ex : String, int, bool, List<String>
   final String type;
-
-  /// * name of the getter
-  final String name;
 
   /// * the actual return of the getter example => 'name'.tr
   /// * don't add a `;` at the end of the return
@@ -24,17 +22,26 @@ class ClassGetter {
 
   ClassGetter({
     required this.type,
-    required this.name,
+    required String name,
     required this.whatToReturn,
     this.comments = const [],
     this.deprecatedMessage,
     this.isStatic = false,
-  });
+  }) : super(name: name);
 
   bool get isDeprecated => deprecatedMessage != null;
-  bool get isPrivate => name.startsWith('_');
   @override
   String toString() {
     return "${comments.isEmpty ? '' : '\n$comments\n'}${isDeprecated ? '@Deprecated(\'$deprecatedMessage\')\n' : ''}${isStatic ? 'static ' : ''}$type get ${isPrivate ? '_' : ''}${name.camelCase} => $whatToReturn ;";
   }
+
+  @override
+  List<Object?> get props => [
+        name,
+        type,
+        whatToReturn,
+        isStatic,
+        comments,
+        deprecatedMessage,
+      ];
 }

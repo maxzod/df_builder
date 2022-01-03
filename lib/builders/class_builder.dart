@@ -1,14 +1,9 @@
-import 'package:equatable/equatable.dart';
+import 'package:df_builder/builders/function_builder.dart';
+import 'package:df_builder/df_builder.dart';
 import 'package:recase/recase.dart';
 
-import 'getter.dart';
-import 'prop.dart';
-
 /// * creates new dart class
-class ClassBuilder extends Equatable {
-  /// * class name
-  final String name;
-
+class ClassBuilder extends BaseBuilder {
   /// * top comments
   final List<String> topComments;
 
@@ -21,26 +16,28 @@ class ClassBuilder extends Equatable {
   /// * class getters
   final List<ClassGetter> getters;
 
+  /// * class functions
+  final List<FunctionBuilder> functions;
+
   ClassBuilder({
-    required this.name,
+    required String name,
     this.classProps = const [],
     this.topComments = const [],
     this.getters = const [],
+    this.functions = const [],
     this.havePrivateConstructor = false,
-  });
+  }) : super(name: name);
 
   @override
   String toString() {
     final buffer = StringBuffer(topCommentsBuilder());
     final gettersBuffer = StringBuffer()..writeAll(getters);
+    final functionsBuffer = StringBuffer()..writeAll(functions);
     buffer.write(
-        'class ${isPrivate ? '_' : ''}${name.pascalCase}{${isPrivate ? '_' : ''}${name.pascalCase}${havePrivateConstructor ? '._' : ''}(${constructorProps()});${classPropsBuilder()}$gettersBuffer}');
+        'class ${isPrivate ? '_' : ''}${name.pascalCase}{${isPrivate ? '_' : ''}${name.pascalCase}${havePrivateConstructor ? '._' : ''}(${constructorProps()});${classPropsBuilder()}$gettersBuffer$functionsBuffer}');
 
     return buffer.toString();
   }
-
-  ///* return true based on the class name if starts with `_`
-  bool get isPrivate => name.startsWith('_');
 
   String classPropsBuilder() {
     final _buffer = StringBuffer();

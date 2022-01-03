@@ -23,4 +23,11 @@ void main() {
         type: 'String', name: '_foo', isStatic: true, whatToReturn: 'bar');
     expect(prop.toString(), 'static String get _foo => bar ;');
   });
+  test('== operator', () {
+    final prop1 = ClassGetter(
+        type: 'String', name: '_foo', isStatic: true, whatToReturn: 'bar');
+    final prop2 = ClassGetter(
+        type: 'String', name: '_foo', isStatic: true, whatToReturn: 'bar');
+    expect(prop1, equals(prop2));
+  });
 }

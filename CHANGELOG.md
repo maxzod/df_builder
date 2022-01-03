@@ -1,3 +1,8 @@
+## 0.0.5
+
+- Enhancements
+  - coverage up to 100%
+
 ## 0.0.4
 
 - hot fix

@@ -1,4 +1,4 @@
-import 'class_builder.dart';
+import 'package:df_builder/df_builder.dart';
 import 'package:df_builder/extensions/list_of_string.dart';
 
 /// * handlers creation of dart files
