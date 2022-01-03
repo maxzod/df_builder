@@ -55,7 +55,7 @@ class DartFileBuilder {
   /// if a class already exists with the same name it will be ignored
   void addClass(ClassBuilder builder) {
     if (_classes.where((e) => e.name == builder.name).isNotEmpty) {
-      throw '[DFB] class ${builder.name} already exists';
+      throw Exception('[DFB] class ${builder.name} already exists');
     }
     _classes.add(builder);
   }

@@ -81,4 +81,25 @@ void main() {
           '/// this is a comment\n/// this is a comment 2\nclass Foo{Foo(this.foo,this.bar,);final String foo ;\nfinal String bar ;\n}');
     });
   });
+  test('== operator', () {
+    final builder1 = ClassBuilder(
+      name: 'foo',
+      classProps: [
+        ClassProp(type: 'String', name: 'foo', isFinal: true),
+      ],
+      getters: [
+        ClassGetter(name: 'foo', type: 'String', whatToReturn: 'this.foo'),
+      ],
+    );
+    final builder2 = ClassBuilder(
+      name: 'foo',
+      classProps: [
+        ClassProp(type: 'String', name: 'foo', isFinal: true),
+      ],
+      getters: [
+        ClassGetter(name: 'foo', type: 'String', whatToReturn: 'this.foo'),
+      ],
+    );
+    expect(builder1, equals(builder2));
+  });
 }
