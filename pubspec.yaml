@@ -1,6 +1,6 @@
 name: df_builder
 description: small package to generate code in a simple way
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/FlutterQueen/df_builder
 issue_tracker: https://github.com/FlutterQueen/df_builder/issues
 

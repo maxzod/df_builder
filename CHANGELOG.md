@@ -1,5 +1,9 @@
 ## 0.0.5
 
+- NEW ::
+
+  - `FunctionBuilder` `ParamBuilder`
+
 - Enhancements
   - coverage up to 100%
 
